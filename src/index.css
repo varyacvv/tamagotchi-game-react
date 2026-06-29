@@ -1,4 +1,9 @@
+/* =========================
+   BASE
+========================= */
+
 body {
+  margin: 0;
   background: #222;
   display: flex;
   justify-content: center;
@@ -7,42 +12,148 @@ body {
   font-family: monospace;
 }
 
+/* =========================
+   APP CONTAINER
+========================= */
+
 .app {
   background: #cfd8dc;
   padding: 20px;
   border-radius: 30px;
-  width: 300px;
+  width: 320px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
+
+/* =========================
+   SCREEN (Game Boy style)
+========================= */
 
 .screen {
   background: #9bbc0f;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================
+   PET IMAGE + ANIMATION
+========================= */
+
+.pet-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pet {
   width: 150px;
+  image-rendering: pixelated;
+
+  /* плавность */
+  transition: all 0.4s ease;
+
+  /* "жизнь" питомца */
+  animation: breathe 3s ease-in-out infinite;
 }
+
+/* дыхание */
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* смена эмоций */
+.pet-change {
+  animation: fadeChange 0.25s ease;
+}
+
+@keyframes fadeChange {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* моргание */
+@keyframes blink {
+  0%, 92% { opacity: 1; }
+  94% { opacity: 0.7; }
+  96% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.pet {
+  animation:
+    breathe 3s ease-in-out infinite,
+    blink 6s infinite;
+}
+
+/* =========================
+   BARS (STATS)
+========================= */
 
 .bar-bg {
   background: #555;
   height: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .bar-fill {
-  background: #0f0;
+  background: #00ff4c;
   height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .controls button {
-  font-size: 20px;
-  margin: 5px;
+  font-size: 22px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.1s ease, background 0.2s ease;
 }
+
+.controls button:hover {
+  background: #eee;
+}
+
+.controls button:active {
+  transform: scale(0.9);
+}
+
+/* =========================
+   DEATH STATE
+========================= */
 
 .dead-text {
   color: red;
   margin-top: 10px;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
