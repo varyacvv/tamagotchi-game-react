@@ -1,55 +1,33 @@
-# Tamagotchi 🐱
+# Tamagotchi Game
 
-A small pet game built with React + TypeScript.
+Ссылка для просмотра:
 
-This project is my pet-project for learning React hooks, TypeScript, component architecture, and state management.
+## Описание
 
-## Features
-- Feed your pet 🍔
-- Play with your pet 🎮
-- Put your pet to sleep 💤
-- Reset the game 🔄
-   Dynamic pet emotions:
-- Happy 😄
-- Normal 🙂
-- Sad 😢
-- Sleeping 😴
-- Dead 💀
-## Progress bars for:
-- Hunger
-- Happiness
-- Energy
+**Tamagotchi Game** — это небольшое веб-приложение, вдохновлённое классической игрой «Тамагочи». Проект создавался как pet-project для изучения React-хуков, TypeScript, компонентной архитектуры и управления состоянием. Питомец живёт в браузере, его состояние сохраняется в `localStorage`, а эмоции меняются в зависимости от уровня основных показателей.[reference:0]
 
-### Automatic stat decreasing over time
-### Save game progress in localStorage
+## Возможности
 
-## The pet has 3 main stats:
+- **Кормление** — восстанавливает уровень голода[reference:1]
+- **Игра** — повышает счастье, но снижает энергию[reference:2]
+- **Сон** — восстанавливает энергию на 5 секунд[reference:3]
+- **Сброс игры** — начинает новую игру[reference:4]
+- **Динамические эмоции питомца**: Happy, Normal, Sad, Sleeping, Dead[reference:5]
+- **Автоматическое снижение показателей** с течением времени[reference:6]
+- **Сохранение прогресса** в `localStorage`[reference:7]
+- **Изменение внешнего вида питомца** в зависимости от среднего уровня стат[reference:8]
 
-- Hunger
-- Happiness
-- Energy
-- *Every second, all stats decrease. If one of the stats reaches 0, the pet dies.*
+## Технологии
 
-## Actions:
-- Feed → restores hunger
-- Play → increases happiness, decreases energy
-- Sleep → restores energy for 5 seconds
-- Reset → starts a new game
-- 
-# Pet States
-The pet changes its image depending on its average stats:
-**80–100** → happy
-**40–79** → normal
-**1–39** → sad
-
-## Used technologies
 - React
 - TypeScript
 - Vite
 - CSS
 - localStorage
 
-## Project Structure
+## 📁 Структура проекта
+
+```
 src/
 ├── assets/
 ├── components/
@@ -67,19 +45,70 @@ src/
 ├── App.tsx
 ├── main.tsx
 └── index.css
+```
+## Игровая механика
 
-## Installation
+Питомец имеет **три основных показателя**:
 
-- Clone the repository:
-- git clone <your-repository-link>
+- **Hunger** (голод)
+- **Happiness** (счастье)
+- **Energy** (энергия)
 
-## While building this project I practiced:
+> Каждую секунду все показатели уменьшаются. Если один из них достигает 0, питомец умирает.
 
-- React components
-- Props
-- Custom hooks
-- useState
-- useEffect
-- TypeScript
-- localStorage persistence
-- Game state logic
+### Эмоции питомца
+
+Внешний вид питомца меняется в зависимости от **среднего значения** всех трёх показателей:
+```
+| Среднее значение | Эмоция |
+|------------------|--------|
+| 80–100           | Happy  |
+| 40–79            | Normal |
+| 1–39             | Sad    |
+```
+
+### Действия игрока
+```
+| Действие | Эффект |
+|----------|--------|
+| **Feed**  | восстанавливает голод |
+| **Play**  | повышает счастье, снижает энергию |
+| **Sleep** | восстанавливает энергию на 5 секунд |
+| **Reset** | начинает новую игру |
+```
+
+## 🔧 Установка и запуск
+
+### Требования
+
+- Установленный [Node.js](https://nodejs.org/) (версия 16 или выше)
+- npm или yarn
+
+### Инструкция по установке
+
+1. Клонировать репозиторий:
+   ```bash
+   git clone https://github.com/varyacvv/tamagotchi-game-react.git
+   cd tamagotchi-game-react
+   ```
+2. Установить зависимости:
+
+```bash
+npm install
+```
+или
+```bash
+yarn install
+```
+3. Запустить проект в режиме разработки:
+
+```bash
+npm run dev
+```
+ или
+``` bash
+yarn dev
+```
+4. Открыть http://localhost:5173 в браузере.
+
+
